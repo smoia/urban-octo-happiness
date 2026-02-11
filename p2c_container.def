@@ -8,11 +8,11 @@ P2C_VER=0.28.2
 
 %environment
 export DEBIAN_FRONTEND=noninteractive
-export TZ=Europe/Brussels
+export TZ=Europe/Paris
 
 %post
 export DEBIAN_FRONTEND=noninteractive
-export TZ=Europe/Brussels
+export TZ=Europe/Paris
 
 apt update -qq
 apt install -y -q --no-install-recommends python3-distutils python3-pip python-is-python3
