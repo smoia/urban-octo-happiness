@@ -1,0 +1,28 @@
+Bootstrap: docker
+From:  ubuntu:{{ UBUNTU_VER }}
+
+
+%arguments
+UBUNTU_VER=22.04
+P2C_VER=0.28.2
+
+%environment
+export DEBIAN_FRONTEND=noninteractive
+export TZ=Europe/Paris
+
+%post
+export DEBIAN_FRONTEND=noninteractive
+export TZ=Europe/Paris
+
+apt update -qq
+apt install -y -q --no-install-recommends python3-distutils python3-pip python-is-python3
+
+pip3 install pip==25.0 setuptools==70.3.0 wheel==0.37.1
+
+pip3 install phys2cvr=={{ P2C_VER }}
+
+rm -rf /var/lib/apt/lists/*
+
+%labels
+org.label-schema.name="phys2cvrcontainer"
+org.label-schema.description="phys2cvr container for test version {{ P2C_VER }}"
